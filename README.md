@@ -1,4 +1,4 @@
-# Module tests
+# UPPMAX to Dardel
 
 I rsynced over the whole /sw/mf folder, as well as all modules that are less than 50mb in size (keeping it small for testing), 293 of them. The names are stored in a file in this repo called `rackham_sw_bioinfo_less-than-50-mb.out`
 
