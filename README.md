@@ -48,6 +48,7 @@ In a separate project, [uppmax_executables](https://github.com/NBISweden/uppmax_
 
 
 **Update /sw/ in all files**
+
 We should probably replace all occurances of `/sw/` in all files in `sw/bioinfo` with the new path to the `sw` folder in this project, like we did for the module files above. Some scripts variables and hashbangs are hardcoded to the Rackham file structure and will not work when run on Dardel. Would probably look the same as the module find command above, and it is probably wise to figure out a way to exclude certain file types for this, e.g. .fasta, .hmm and the like, to avoid spending lots of time sed:ing data files that will never contain paths.
 
 ```bash
@@ -56,9 +57,11 @@ find . -type f -exec sed -i -e "s%/sw/%$UtDROOT/sw/%g" {} \;
 ```
 
 **Remove loading of uppmax module**
+
 Many module files will load the `uppmax` module while being loaded. There is no uppmax module at PDC so we either have to remove it from all module files, or create a mock module named `uppmax` that does nothing. The mock module sounds more robust to avoid sed:ing all module files again. Ok, i did it, stored in `$UtDROOT/sw/mf.as_on_rackham/rackham/bioinfo-tools/misc/uppmax`
 
 **Remove loading of different gcc modules?**
+
 We have versions of `gcc` on Rackham that does not exist on Dardel, e.g. `gcc/12.2.0`. Will stuff break if we remove all those loads? Or should they be changed to the Dardel equivalents?
 
 
